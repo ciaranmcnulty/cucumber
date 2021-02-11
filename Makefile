@@ -58,6 +58,7 @@ push_subrepos:
 docker-run:
 	docker pull cucumber/cucumber-build:latest
 	docker run \
+	  --platform linux/amd64 \
 	  --publish "6006:6006" \
 	  --volume "${shell pwd}":/app \
 	  --volume "${HOME}/.m2/repository":/home/cukebot/.m2/repository \
@@ -73,6 +74,7 @@ docker-run-with-secrets:
 	../secrets/update_permissions
 	docker pull cucumber/cucumber-build:latest
 	docker run \
+	  --platform linux/amd64 \
 	  --volume "${shell pwd}":/app \
 	  --volume "${HOME}/.m2/repository":/home/cukebot/.m2/repository \
 	  --volume "${shell pwd}/../secrets/.gem":/home/cukebot/.gem \
